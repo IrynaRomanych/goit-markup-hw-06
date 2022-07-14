@@ -577,11 +577,11 @@ address {
 }
 
 .subscribe {
-  margin-left: 93px;
+  margin-left: auto;
 }
 
 .footer-subscribe-form {
-  position: relative;
+  display: flex;
 }
 
 .footer-subscribe-title {
@@ -600,6 +600,7 @@ address {
   height: 50px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--primery-bg-color);
   background-color: var(--hero-footer-background);
   outline: none;
 
@@ -612,7 +613,6 @@ address {
 }
 
 .subscribe-btn {
-  position: absolute;
   display: inline-flex;
   margin-left: 12px;
   padding: 10px 28px 10px 29px;
@@ -834,12 +834,20 @@ address {
   background-color: var(--primery-bg-color);
   border-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.m-btn:hover {
+  fill: var(--accent-color);
 }
 
 .modal-btn {
   width: 11px;
   height: 11px;
 }
+
+/* Форма заявки */
 
 .form {
   display: block;
@@ -860,7 +868,9 @@ address {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+}
 
+.form-text {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.17;
@@ -928,9 +938,11 @@ textarea {
 }
 
 .lable-checkbox {
-  position: relative;
-  display: inline-block;
+  display: flex;
   margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .checkbox {
@@ -947,8 +959,6 @@ textarea {
 }
 
 .policy {
-  margin-left: 39px;
-
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
@@ -964,33 +974,27 @@ textarea {
   text-decoration: underline;
 }
 
-.checkbox-icon-unchecked {
-  position: absolute;
-  display: inline-block;
-  left: 16px;
-  bottom: 5px;
+.checkbox-icon {
+  display: block;
   width: 16px;
   height: 15px;
 
-  border: 2px solid var(--primary-text-color);
+  outline: 2px solid var(--primary-text-color);
+  outline-offset: -2px;
+  border-radius: 2px;
+  transition: outline-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.checkbox-icon-checked {
-  position: absolute;
-  display: inline-block;
-  left: 16px;
-  bottom: 5px;
-  width: 16px;
-  height: 15px;
-
+.icon-checked {
   opacity: 0;
-  fill: var(--accent-color);
-  background-color: var(--primery-bg-color);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.lable-checkbox:focus-within .checkbox-icon-checked {
+.checkbox:checked + .checkbox-icon .icon-checked {
   opacity: 1;
+}
+.checkbox:checked + .checkbox-icon {
+  outline-color: transparent;
 }
 
 .form-button {
